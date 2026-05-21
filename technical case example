@@ -69,7 +69,7 @@ A. Distribution shift
 Compare:
 Ptrain(X)vsPcurrent(X)P_{train}(X) \quad vs \quad P_{current}(X)Ptrain​(X)vsPcurrent​(X)
 Methods:
-
+Ptrain​(X)vsPcurrent​(X)
 
 PSI (Population Stability Index)
 
@@ -102,7 +102,9 @@ Increase in high-risk drivers
 
 C. Target drift
 Check:
-P(Y∣X)P(Y|X)P(Y∣X)
+P(Y∣X)
+P(Y|X)
+P(Y∣X)
 
 Has claims frequency/severity changed?
 
@@ -113,7 +115,8 @@ A. Price elasticity modelling
 
 Estimate:
 
-Conversion=f(Price,Competitor position)\text{Conversion} = f(\text{Price}, \text{Competitor position})Conversion=f(Price,Competitor position)
+Conversion=f(Price,Competitor position)
+\text{Conversion} = f(\text{Price}, \text{Competitor position})Conversion=f(Price,Competitor position)
 Check:
 
 Are we priced too high relative to market?
@@ -134,7 +137,8 @@ A. Feature contribution analysis
 For each region:
 
 Decompose premium:
-Premium=exp⁡(β0+∑βiXi)\text{Premium} = \exp(\beta_0 + \sum \beta_i X_i)Premium=exp(β0​+∑βi​Xi​)
+Premium=exp⁡(β0+∑βiXi)
+\text{Premium} = \exp(\beta_0 + \sum \beta_i X_i)Premium=exp(β0​+∑βi​Xi​)
 
 
 Check:
@@ -186,7 +190,8 @@ Demographic proxies
 
 
 B. Disparate impact testing
-Outcome for group AOutcome for group B\frac{\text{Outcome for group A}}{\text{Outcome for group B}}Outcome for group BOutcome for group A​
+Outcome for group A/Outcome for group B
+\frac{\text{Outcome for group A}}{\text{Outcome for group B}}Outcome for group BOutcome for group A​
 Look for:
 
 Systematic overpricing
@@ -194,7 +199,8 @@ Systematic overpricing
 
 C. Residual analysis
 Check:
-Residual=Actual−Predicted\text{Residual} = \text{Actual} - \text{Predicted}Residual=Actual−Predicted
+Residual=Actual−Predicted
+\text{Residual} = \text{Actual} - \text{Predicted}Residual=Actual−Predicted
 
 Persistent bias in certain groups → model unfairness
 
@@ -266,10 +272,19 @@ Fairness metrics
 
 🎤 💬 TECHNICAL INTERVIEW ANSWER (POLISHED)
 
-I would start by assessing calibration and discrimination using metrics such as loss ratio by decile, deviance, and Gini to identify performance deterioration. I would then investigate data drift using PSI and distribution comparisons to determine whether input features or target behaviour have shifted.
-For the conversion drop, I would analyse price elasticity and competitor positioning to see whether we are misaligned with the market. The regional anomalies would require a feature contribution analysis, using GLM decomposition or SHAP values to identify which variables are driving pricing differences, while also checking for proxy effects and interaction terms.
-I would also perform fairness diagnostics, including segment-level residual analysis and disparate impact testing, to identify any unintended bias.
-Based on findings, I would implement short-term recalibration or overlays, followed by model retraining with updated data, improved feature selection, and regularisation if needed. Finally, I would strengthen monitoring using drift metrics, performance tracking, and fairness checks to ensure ongoing model stability and compliance.
+I would start by assessing calibration and discrimination using metrics such as loss ratio by decile, deviance, and Gini
+to identify performance deterioration. 
+I would then investigate data drift using PSI and distribution comparisons to determine whether input features or 
+target behaviour have shifted.
+
+For the conversion drop, I would analyse price elasticity and competitor positioning to see whether we are misaligned with the market. 
+The regional anomalies would require a feature contribution analysis, using GLM decomposition or SHAP values to identify which variables
+are driving pricing differences, while also checking for proxy effects and interaction terms.
+I would also perform fairness diagnostics, including segment-level residual analysis and disparate impact testing, 
+to identify any unintended bias.
+Based on findings, I would implement short-term recalibration or overlays, followed by model retraining with updated data,
+improved feature selection, and regularisation if needed. Finally, I would strengthen monitoring using drift metrics, 
+performance tracking, and fairness checks to ensure ongoing model stability and compliance.
 
 
 🚀 What makes this “top-tier”
