@@ -1,0 +1,332 @@
+ “BAD DATASET” SCENARIO
+❓ You are given this dataset:
+You’re building a motor pricing model, and you notice:
+
+20% missing values in income
+Postcode formats inconsistent (e.g. "LS1", "LS1 2AB", null)
+Duplicate customer records
+Some customers have claims recorded before policy start date
+Extreme outliers in claim amounts (e.g. £10, £5M)
+A variable called “risk_score” but no documentation
+Dataset includes policy renewal decisions (conversion)
+No clear train/test split (time not well defined)
+
+
+✅ ✅ What a top candidate does (step-by-step)
+
+🔹 1. Initial triage (before touching the data)
+
+“I’d first step back and assess whether the dataset is usable and aligned with the modelling objective.”
+
+Key questions:
+
+What is the target?
+
+Frequency, severity, or pure premium?
+
+
+What time period does this data cover?
+Are we predicting:
+
+Pricing risk? OR
+Customer behaviour (conversion)?
+
+
+
+👉 Immediate red flag:
+
+Conversion data → potential leakage risk
+
+
+🔹 2. Data quality audit (structured assessment)
+I would create a data quality report:
+A. Completeness
+
+% missing per variable
+Pattern of missingness
+
+B. Consistency
+
+Format issues (postcode problem)
+Units (e.g. claim amounts)
+
+C. Validity
+
+Claims before policy start = impossible → data error
+
+D. Uniqueness
+
+Duplicate records
+
+👉 Output:
+
+A ranked list of issues by severity
+
+
+🔹 3. Fix critical data errors FIRST
+🚨 A. Impossible values (highest priority)
+
+Claims before policy start:
+
+Remove or correct
+Investigate source system
+
+
+
+👉 Why:
+
+These corrupt the target variable → model becomes meaningless
+
+
+🚨 B. Duplicates
+
+Identify:
+
+Exact duplicates
+Partial duplicates
+
+
+
+👉 Strategy:
+
+Deduplicate using:
+
+Customer ID + policy ID
+
+
+If ambiguity:
+
+Keep latest or most complete record
+
+
+
+
+🚨 C. Leakage removal
+
+
+“risk_score” variable:
+
+Ask:
+
+How is it calculated?
+
+
+
+
+
+If derived from future info or claims:
+
+Remove it
+
+
+
+Conversion variable:
+
+Exclude from pricing model inputs
+
+
+
+👉 This is a critical senior-level point
+
+🔹 4. Standardise and clean features
+✅ A. Postcode cleaning
+
+Standardise format:
+
+Extract outward code (e.g. LS1)
+
+
+Handle missing:
+
+Impute or group as “unknown”
+
+
+
+👉 Also flag:
+
+Postcode = proxy risk → fairness consideration
+
+
+✅ B. Missing values (income example)
+Step 1: Understand missingness
+
+Is it:
+
+Random?
+Systematic (e.g. high-income not reporting)?
+
+
+
+Step 2: Treatment
+
+Options:
+
+Median imputation
+Missing indicator variable
+
+
+
+👉 Important:
+
+“I would retain missingness as a signal if it’s informative.”
+
+
+✅ C. Outlier handling (claim amounts)
+Step 1: Validate
+
+Are £5M claims real or data errors?
+
+Step 2: Treat
+
+If valid:
+
+Consider:
+
+Capping (winsorisation)
+Separate modelling (heavy tail)
+
+
+
+
+
+👉 Severity models often:
+
+Use log transformation
+
+
+🔹 5. Reconstruct time dimension (very senior move)
+
+“Since time isn’t clearly defined, I would reconstruct it.”
+
+
+Identify:
+
+Policy start/end dates
+
+
+Create:
+
+Time-based split:
+
+Train → past
+Test → future
+
+
+
+
+
+👉 Why:
+
+Prevent forward-looking bias
+
+
+🔹 6. Exploratory analysis (after cleaning)
+
+Check:
+
+Frequency distribution
+Severity distribution (likely skewed)
+
+
+Relationships:
+
+Risk vs features
+
+
+Segment analysis:
+
+Region
+Customer type
+
+
+
+
+🔹 7. Feature decisions (GDPR + modelling)
+✅ Keep:
+
+Strong predictive, explainable variables
+
+⚠️ Review carefully:
+
+Postcode (proxy risk)
+Income (sensitive / missing-heavy)
+
+❌ Remove:
+
+Leakage variables
+Poor quality / unexplainable features
+
+
+🔹 8. Modelling approach
+
+“Given messy data, I’d start with a robust and interpretable approach.”
+
+Recommended:
+
+Frequency → Poisson GLM
+Severity → Gamma GLM
+Combine → Tweedie
+
+Why:
+
+Robust to noise
+Interpretable
+Easy to validate
+
+
+🔹 9. Validation (focused on robustness)
+Given messy data, I’d emphasise:
+
+Cross-validation
+Stability across segments
+Calibration (predicted vs actual)
+
+👉 Extra checks:
+
+Sensitivity to:
+
+Missing data treatment
+Outlier handling
+
+
+
+
+🔹 10. Monitoring plan (important!)
+
+“Given initial data quality issues, I’d expect instability.”
+
+Set up:
+
+Data quality checks:
+
+Missing rates
+Format issues
+
+
+Drift metrics:
+
+PSI
+
+
+Performance:
+
+Loss ratio
+
+
+
+
+🎤 💬 “Top 5% candidate” answer (concise)
+
+I would begin by performing a structured data quality assessment, identifying critical issues such as impossible values, duplicates, and potential leakage. I would prioritise fixing fundamental errors like claims occurring before policy start dates and removing any variables that may introduce leakage, such as undocumented risk scores or conversion outcomes.
+I would then standardise variables such as postcode, handle missing data appropriately—retaining missingness as a signal where relevant—and treat outliers carefully, particularly for claim severity. Given the lack of clear time structure, I would reconstruct a time-based split to ensure proper validation.
+From there, I would proceed with exploratory analysis and feature selection, ensuring variables are both predictive and justifiable, particularly considering fairness and GDPR implications. I would start with an interpretable modelling approach such as GLMs, validate rigorously with a focus on stability, and implement strong monitoring to track performance and data quality post-deployment.
+
+
+🔥 Why this answer stands out
+It shows:
+
+✅ You prioritise data integrity over modelling
+✅ You catch leakage (most candidates miss this)
+✅ You understand real-world messy data issues
+✅ You integrate GDPR + fairness thinking
+✅ You think about time and causality
