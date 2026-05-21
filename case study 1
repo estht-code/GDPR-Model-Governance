@@ -1,0 +1,176 @@
+CASE STUDY
+❓ Question:
+
+You’ve deployed a pricing model for motor insurance. After 6 months, you observe:
+
+Loss ratios have worsened
+Conversion rates have dropped
+Some regions show significantly higher premiums than expected
+
+How would you investigate and respond?
+
+
+✅ ✅ How to structure your answer (this is key)
+A strong answer should follow this flow:
+
+1. Confirm the issue → 2. Diagnose root cause → 3. Assess risks → 4. Take action → 5. Strengthen governance
+
+
+🧠 ✅ Model Answer (what you should actually say)
+🔹 1. Confirm and quantify the problem
+
+First, I would validate that the observed changes are real and statistically significant, rather than noise.
+
+Check:
+
+Loss ratio trends (overall + by segment)
+Conversion rates by channel/customer type
+Regional breakdown of pricing
+
+👉 Goal: understand where and how bad the issue is
+
+🔹 2. Diagnose root causes (core of the answer)
+A. Performance issues
+
+Has predictive accuracy deteriorated?
+Compare:
+
+Expected vs actual claims
+Model predictions vs outcomes
+
+
+
+👉 Possible issue:
+
+Model is underestimating risk → worse loss ratios
+
+
+B. Data drift (very common)
+
+Compare current vs training data:
+
+Customer mix
+Risk characteristics
+Behaviour
+
+
+
+👉 Example:
+
+New types of drivers entering portfolio → model not trained for them
+
+
+C. Pricing / competitiveness
+
+Analyse:
+
+Price position vs competitors
+
+
+High premiums → lower conversion
+
+
+D. Regional anomaly (important signal)
+
+Drill down into:
+
+Features influencing those regions
+Any proxy effects (e.g. postcode)
+
+
+
+👉 Key risk:
+
+Unintended bias or poor calibration
+
+
+E. Model design / assumptions
+
+Check:
+
+Feature relationships still valid?
+Interaction effects?
+
+
+
+
+🔹 3. Assess regulatory risks (this is what makes your answer stand out)
+
+I would also assess whether these issues create any regulatory concerns.
+
+
+Fairness:
+
+Are some groups/regions being overcharged?
+
+
+Transparency:
+
+Can we explain the pricing differences?
+
+
+GDPR:
+
+Any problematic features driving outcomes?
+
+
+
+👉 This shows senior-level thinking
+
+🔹 4. Take action
+Short-term fixes:
+
+Recalibrate model (adjust coefficients)
+Apply pricing overlays (temporary controls)
+Remove or adjust problematic features
+
+
+Medium-term:
+
+Retrain model with updated data
+Improve feature engineering
+Reassess variable selection
+
+
+If fairness issue:
+
+Remove or constrain proxy variables
+Introduce fairness checks into process
+
+
+🔹 5. Strengthen monitoring & governance
+
+Finally, I would ensure stronger ongoing monitoring to prevent recurrence.
+
+
+Add alerts for:
+
+Loss ratio drift
+Conversion drops
+Pricing anomalies
+
+
+Regular fairness reviews
+More frequent model validation cycles
+
+
+🎯 💬 “Top 5% candidate” summary answer
+If you need a concise version:
+
+I would start by confirming the issues through segment-level analysis of loss ratios, conversion, and pricing. 
+I would then investigate root causes such as performance deterioration, data drift, and pricing competitiveness,
+with a particular focus on the regional anomalies. 
+I would also assess any fairness or regulatory risks, especially if certain groups are disproportionately impacted. 
+  
+Based on findings, I would implement short-term fixes such as recalibration or pricing overlays, followed by model retraining if needed.
+Finally, I would strengthen monitoring and governance to ensure ongoing model stability and compliance.
+
+
+🔥 Why this answer is strong
+It shows:
+
+✅ Structured thinking
+✅ Technical understanding
+✅ Business awareness (conversion + profit)
+✅ Regulatory awareness (GDPR, fairness)
+✅ Ownership and governance mindset
