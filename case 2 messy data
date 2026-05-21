@@ -1,0 +1,286 @@
+CASE
+❓ Question:
+
+You’re given a messy dataset to build a pricing model.
+The data has missing values, inconsistent formats, and unclear variables.
+How would you approach building a robust model?
+
+
+✅ ✅ What interviewers want to see
+They are testing:
+
+Structured thinking ✅
+Data judgement ✅
+Modelling rigour ✅
+Governance awareness ✅
+Practical experience ✅
+
+
+🧠 ✅ GOLD STANDARD STRUCTURE
+
+1. Understand problem → 2. Data cleaning → 3. Exploratory analysis → 4. Feature engineering → 5. Modelling → 6. Validation → 7. Deployment & monitoring
+
+
+🧠 ✅ MODEL ANSWER (TECHNICAL + SENIOR)
+🔹 1. Problem definition (ALWAYS start here)
+
+First, I would clarify the business objective and modelling target.
+
+
+What are we predicting?
+
+Frequency? Severity? Pure premium?
+
+
+What’s the time horizon?
+Any constraints?
+
+Regulatory / fairness / explainability
+
+
+
+👉 This avoids building the wrong model
+
+🔹 2. Data cleaning & preprocessing (critical with messy data)
+A. Data quality assessment
+
+Missing values
+Duplicates
+Inconsistent formats (e.g. dates, categories)
+Outliers
+
+
+B. Missing data handling
+Different strategies depending on variable:
+
+
+Numeric:
+
+Mean/median imputation
+Model-based imputation
+
+
+
+Categorical:
+
+Create “missing” category
+
+
+
+👉 Important:
+
+Missingness itself can be predictive
+
+
+C. Outlier treatment
+
+Winsorisation
+Capping
+Investigate if real vs error
+
+
+D. Consistency checks
+
+Standardise:
+
+Categories (e.g. "M", "Male")
+
+
+Remove duplicates
+Fix data leakage
+
+👉 Example leakage:
+
+Using future claims data
+
+
+🔹 3. Exploratory data analysis (EDA)
+A. Univariate analysis
+
+Distributions
+Skewness
+
+
+B. Bivariate analysis
+
+Relationship between features and target
+
+For pricing:
+
+Claims frequency vs age
+Severity vs vehicle type
+
+
+C. Correlation analysis
+
+Identify:
+
+Multicollinearity (GLM issue)
+
+
+
+
+👉 Output:
+
+Early hypothesis on key drivers
+
+
+🔹 4. Feature engineering (where seniority shows)
+A. Transformations
+
+Log transforms (for severity)
+Binning (e.g. age bands)
+
+
+B. Interaction terms
+
+Age × vehicle
+Region × risk factors
+
+
+C. Encoding
+
+One-hot encoding (categorical)
+Target encoding (with care → leakage risk)
+
+
+D. Feature selection (important for GDPR)
+
+Remove:
+
+Redundant variables
+Proxy variables
+
+
+
+👉 Always ask:
+
+Is this variable necessary and justifiable?
+
+
+🔹 5. Modelling approach
+A. Start simple and interpretable
+
+GLM:
+
+Frequency → Poisson
+Severity → Gamma
+Combined → Tweedie
+
+
+
+👉 Why:
+
+Transparent
+Industry standard
+Easy to explain
+
+
+B. Benchmark models
+
+Compare:
+
+GLM vs ML models (e.g. GBM, XGBoost)
+
+
+
+
+C. Regularisation
+
+Lasso / Ridge:
+
+Prevent overfitting
+Stabilise coefficients
+
+
+
+
+D. Model selection criteria
+
+Performance metrics
+Explainability
+Regulatory acceptability
+
+
+🔹 6. Validation (don’t skip details)
+A. Train-test split / cross-validation
+
+Time-based split (if relevant)
+
+
+B. Performance metrics
+
+Gini
+RMSE / deviance
+Calibration plots
+
+
+C. Stability checks
+
+Across segments
+Sensitivity analysis
+
+
+D. Fairness checks
+
+Segment-level outcomes
+Identify bias
+
+
+👉 This is where many candidates are weak—mentioning fairness puts you ahead
+
+🔹 7. Model governance & documentation
+
+
+Document:
+
+Data sources
+Assumptions
+Feature selection
+Limitations
+
+
+
+Ensure:
+
+Auditability
+Explainability
+
+
+
+
+🔹 8. Deployment & monitoring
+A. Monitoring setup
+
+Performance drift
+Data drift (PSI)
+Business KPIs (loss ratio, conversion)
+
+
+B. Feedback loop
+
+Retraining schedule
+Alerts for anomalies
+
+
+🎤 💬 “Top-tier” concise answer
+If you need a clean version:
+
+I would start by clearly defining the modelling objective and target variable. Given messy data, I would prioritise data cleaning, including handling missing values, standardising formats, and addressing outliers and potential data leakage.
+I would then perform exploratory analysis to understand key drivers and relationships, followed by feature engineering, including transformations, interactions, and careful feature selection to avoid redundancy or proxy bias.
+For modelling, I would begin with an interpretable approach such as a GLM, benchmarking against more complex models if appropriate, while balancing performance and explainability.
+I would validate the model using appropriate performance metrics, calibration checks, and stability analysis across segments, including fairness considerations.
+Finally, I would ensure strong documentation, deploy the model with monitoring for performance and data drift, and establish a feedback loop for ongoing improvement.
+
+
+🔥 What makes this answer strong
+
+✅ End-to-end ownership
+✅ Clean structure (very important)
+✅ Technical + practical balance
+✅ Mentions:
+
+Leakage
+Drift
+Fairness
+Governance
