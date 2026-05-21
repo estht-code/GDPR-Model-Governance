@@ -1,0 +1,312 @@
+GLM vs ML: The Real Trade-Off
+✅ Core idea:
+
+GLMs prioritise interpretability, stability, and regulatory acceptance, while ML models prioritise predictive accuracy and flexibility.
+
+
+🔍 1. Technical comparison
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Aspect                  GLM (e.g. Poisson, Gamma)            ML (e.g. GBM, XGBoost)
+Structure              Parametric (linear in parameters)    Non-parametric
+Relationships          Pre-defined (you specify)            Learns automatically
+Interpretability        High (coefficients)                Low–medium (black box)
+Feature interactions    Must be manually added             Automatically captured
+Handling non-linearity  Needs transformations              Naturally handles
+Overfitting              Lower (with regularisation)        Higher risk
+Performance              Good baseline                      Often higher
+Stability                High                              Can be unstable
+Regulatory acceptance    Strong                             More scrutiny
+
+🧠 2. When you would use GLM (very important)
+✅ Use GLM when:
+🔹 A. Regulatory environment is strict
+
+Insurance pricing (FCA, Solvency II, GDPR)
+Need:
+
+Explainability
+Auditability
+
+
+
+👉 GLMs are easy to:
+
+Justify
+Document
+Defend
+
+
+🔹 B. You need transparency
+
+Can clearly say:
+
+“+10% premium due to age band”
+
+
+
+
+🔹 C. Dataset is messy or limited
+
+GLMs are:
+
+More robust
+Less sensitive to noise
+
+
+
+
+🔹 D. Business stakeholders need clarity
+
+Easier to communicate to:
+
+Underwriters
+Risk teams
+
+
+
+
+💬 Good line:
+
+“GLMs are often the default in regulated pricing because they balance performance with explainability and governance requirements.”
+
+
+🚀 3. When you would use ML
+✅ Use ML when:
+🔹 A. You have large, rich datasets
+
+Many features
+Complex interactions
+
+
+🔹 B. There are strong non-linear relationships
+
+Example:
+
+Risk varies non-linearly with age
+
+
+
+
+🔹 C. You need incremental performance gains
+
+Even small improvements → large financial impact
+
+
+🔹 D. You can manage explainability
+
+Using:
+
+SHAP
+Partial dependence plots
+
+
+
+
+💬 Good line:
+
+“I would consider ML models where there is clear evidence of non-linear relationships or interaction effects that a GLM cannot easily capture.”
+
+
+⚖️ 4. The REAL trade-offs (what interviewers care about)
+🔥 A. Accuracy vs Explainability
+
+ML → higher predictive power
+GLM → easier to explain
+
+👉 In regulated pricing:
+
+Explainability often wins unless performance gap is significant
+
+
+🔥 B. Flexibility vs Control
+
+ML:
+
+Learns everything (including noise, bias)
+
+
+GLM:
+
+You control structure
+
+
+
+👉 Risk:
+
+ML can learn undesirable relationships (bias/proxies)
+
+
+🔥 C. Performance vs Fairness
+
+ML may:
+
+Use subtle proxies (postcode patterns, etc.)
+
+
+Harder to detect bias
+
+
+🔥 D. Speed vs Governance effort
+
+GLM:
+
+Faster to validate and approve
+
+
+ML:
+
+Requires:
+
+Explainability layer
+More validation
+More documentation
+
+
+
+
+
+
+🧠 5. Best practice (what strong candidates say)
+✅ Hybrid approach
+
+“I typically start with a GLM as a baseline, then benchmark against ML models.”
+
+Step-by-step:
+
+Build GLM (interpretable baseline)
+Build ML model (e.g. GBM)
+Compare:
+
+Performance uplift
+Stability
+
+
+Assess:
+
+Is uplift material?
+Is it explainable?
+
+
+Decide:
+
+Stick with GLM OR
+Use ML with controls
+
+
+
+
+✅ Advanced approach (very strong answer)
+
+Use ML to:
+
+Discover interactions
+
+
+Then:
+
+Feed insights into GLM
+
+
+
+👉 This gives:
+
+Interpretability + better performance
+
+
+🧠 6. Regulatory lens (this is what gets you hired)
+Under GDPR / FCA expectations:
+GLM ✅
+
+Transparent
+Easy to explain
+Lower risk
+
+ML ⚠️
+
+Must justify:
+
+Why complexity is needed
+
+
+Must ensure:
+
+Explainability
+Fairness
+No hidden bias
+
+
+
+
+💬 Strong line:
+
+“In a regulated environment, I would only deploy an ML model if I can demonstrate that the performance uplift is meaningful and that the model remains explainable, fair, and appropriately governed.”
+
+
+🎤 💬 Interview-ready answer
+⭐ Question: “Would you use GLM or ML?”
+
+I would typically start with a GLM as a baseline because it provides strong interpretability, stability, and aligns well with regulatory expectations. I would then benchmark it against machine learning models such as gradient boosting to assess whether there is a meaningful improvement in predictive performance.
+If the ML model offers significant uplift, I would evaluate whether it can be made sufficiently explainable using techniques such as SHAP values, and whether it introduces any fairness or bias concerns.
+In a regulated pricing context, the decision ultimately depends on balancing performance with transparency, fairness, and governance, and I would only adopt a more complex model if it can be robustly justified and controlled.
+
+
+🔥 What makes this answer strong
+
+✅ Shows technical breadth (GLM + ML)
+✅ Shows judgement (not blindly using ML)
+✅ Mentions regulation, fairness, explainability
+✅ Demonstrates real-world approach (benchmarking)
