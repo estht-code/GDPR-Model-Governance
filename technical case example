@@ -1,0 +1,282 @@
+CASE (TECHNICAL RESPONSE)
+❓ Problem recap
+
+Loss ratio ↑ (worse profitability)
+Conversion ↓ (less competitive)
+Regional premium anomalies
+
+
+✅ 🧠 STRUCTURED TECHNICAL APPROACH
+🔹 1. Quantify deterioration (with proper metrics)
+A. Performance diagnostics
+Compare expected vs actual loss:
+
+Calibration:
+Actual Loss/Expected Loss\text{Actual Loss} / \text{Expected Loss}Actual Loss/Expected Loss
+
+Deviance / log-likelihood (GLMs)
+Gini / AUC (ranking power)
+
+Segment by:
+
+Region
+Risk bands
+Customer type
+
+👉 Goal:
+
+Identify where model is breaking down
+
+
+🔹 2. Deep dive: model performance breakdown
+A. Calibration drift
+Check whether model is:
+
+Under-predicting or over-predicting risk
+
+Plots:
+
+Predicted vs actual loss (by decile)
+Lift charts
+
+👉 Example:
+
+Top decile predicted risk ≠ actual highest loss
+→ ranking deterioration
+
+
+B. Stability of coefficients (GLM-specific)
+
+Compare coefficients:
+
+Training vs current data
+
+
+Check:
+
+Sign flips
+Magnitude changes
+
+
+
+👉 Indicates:
+
+Breakdown of relationships
+
+
+🔹 3. Data drift analysis (critical)
+A. Distribution shift
+Compare:
+Ptrain(X)vsPcurrent(X)P_{train}(X) \quad vs \quad P_{current}(X)Ptrain​(X)vsPcurrent​(X)
+Methods:
+
+
+PSI (Population Stability Index)
+
+PSI < 0.1 → stable
+0.1–0.25 → moderate drift
+
+
+0.25 → significant drift
+
+
+
+
+
+KS test (for continuous variables)
+
+
+
+B. Feature-level drift
+Check:
+
+Age distribution
+Geography mix
+Vehicle type
+
+👉 Example:
+
+Increase in high-risk drivers
+→ explains worsening loss ratio
+
+
+C. Target drift
+Check:
+P(Y∣X)P(Y|X)P(Y∣X)
+
+Has claims frequency/severity changed?
+
+👉 COVID/post-COVID patterns = classic example
+
+🔹 4. Pricing / demand analysis (conversion drop)
+A. Price elasticity modelling
+
+Estimate:
+
+Conversion=f(Price,Competitor position)\text{Conversion} = f(\text{Price}, \text{Competitor position})Conversion=f(Price,Competitor position)
+Check:
+
+Are we priced too high relative to market?
+
+
+B. Competitor benchmarking
+
+Compare:
+
+Percentile rank of price
+
+
+If consistently above market → explains drop
+
+
+🔹 5. Regional anomaly investigation (most interesting part)
+A. Feature contribution analysis
+For each region:
+
+Decompose premium:
+Premium=exp⁡(β0+∑βiXi)\text{Premium} = \exp(\beta_0 + \sum \beta_i X_i)Premium=exp(β0​+∑βi​Xi​)
+
+
+Check:
+
+Which variables drive high premiums?
+
+
+B. Partial dependence / SHAP (if ML model)
+
+Identify:
+
+Feature impact by region
+
+
+
+
+C. Proxy variable detection
+Key risk:
+
+Postcode ↔ socioeconomic / protected characteristics
+
+Test:
+
+Correlation of features with:
+
+External demographic proxies
+
+
+
+
+D. Interaction effects
+
+Region × other features
+
+👉 Example:
+
+Region × age → amplified pricing
+
+
+🔹 6. Fairness diagnostics (advanced)
+A. Group-level analysis
+Compare:
+
+Average premium
+Loss ratio
+Across:
+Regions
+Demographic proxies
+
+
+B. Disparate impact testing
+Outcome for group AOutcome for group B\frac{\text{Outcome for group A}}{\text{Outcome for group B}}Outcome for group BOutcome for group A​
+Look for:
+
+Systematic overpricing
+
+
+C. Residual analysis
+Check:
+Residual=Actual−Predicted\text{Residual} = \text{Actual} - \text{Predicted}Residual=Actual−Predicted
+
+Persistent bias in certain groups → model unfairness
+
+
+🔹 7. Root cause synthesis
+You’d typically find combinations like:
+
+Data drift → model no longer calibrated
+Model overfitting → poor generalisation
+Competitive misalignment → conversion drop
+Feature issues → regional bias
+
+
+🔧 ✅ REMEDIATION ACTIONS (TECHNICAL)
+🔹 Short-term
+
+Recalibration:
+
+Adjust intercept / scaling factor
+
+
+Segment-level adjustments
+Pricing caps/floors
+
+
+🔹 Medium-term
+A. Model retraining
+
+Use updated dataset
+Re-select features
+Revalidate
+
+
+B. Feature engineering improvements
+
+Remove unstable variables
+Reduce proxy risk
+
+
+C. Regularisation
+
+Lasso / Ridge:
+
+Reduce overfitting
+Stabilise coefficients
+
+
+
+
+🔹 Fairness mitigation
+
+Constraint optimisation:
+
+Add fairness penalties
+
+
+Remove proxy features
+Post-model adjustments
+
+
+🔹 Monitoring improvements
+Set automated tracking:
+
+PSI for drift
+Loss ratio by segment
+Conversion curves
+Fairness metrics
+
+
+🎤 💬 TECHNICAL INTERVIEW ANSWER (POLISHED)
+
+I would start by assessing calibration and discrimination using metrics such as loss ratio by decile, deviance, and Gini to identify performance deterioration. I would then investigate data drift using PSI and distribution comparisons to determine whether input features or target behaviour have shifted.
+For the conversion drop, I would analyse price elasticity and competitor positioning to see whether we are misaligned with the market. The regional anomalies would require a feature contribution analysis, using GLM decomposition or SHAP values to identify which variables are driving pricing differences, while also checking for proxy effects and interaction terms.
+I would also perform fairness diagnostics, including segment-level residual analysis and disparate impact testing, to identify any unintended bias.
+Based on findings, I would implement short-term recalibration or overlays, followed by model retraining with updated data, improved feature selection, and regularisation if needed. Finally, I would strengthen monitoring using drift metrics, performance tracking, and fairness checks to ensure ongoing model stability and compliance.
+
+
+🚀 What makes this “top-tier”
+This version shows:
+
+✅ Strong statistical understanding (PSI, calibration, deviance)
+✅ GLM + ML awareness
+✅ Deep diagnostic thinking
+✅ Explicit fairness + GDPR linkage
+✅ Ability to connect technical → business outcomes
