@@ -1,0 +1,292 @@
+1. Model Validation (before and after deployment)
+✅ What it means
+
+Ensuring the model is fit for purpose, accurate, stable, fair, and compliant before and after it goes live.
+
+
+🔍 What you actually check
+A. Model performance
+
+Does the model predict well?
+Metrics depend on use case:
+
+Pricing → loss ratio, Gini, RMSE, deviance
+
+
+Compare:
+
+Training vs test performance
+Against benchmark models
+
+
+
+👉 Goal: avoid overfitting and ensure robustness
+
+B. Assumptions & methodology
+
+Are modelling assumptions reasonable and justified?
+Example:
+
+Linear relationships in GLMs
+Stationarity assumptions
+
+
+Check:
+
+Feature transformations
+Interaction terms
+
+
+
+
+C. Data quality
+
+Is the data:
+
+Accurate
+Complete
+Representative
+
+
+
+👉 Checks:
+
+Missing values
+Outliers
+Data leakage
+
+
+D. Feature selection (very GDPR-relevant)
+
+Are variables:
+
+Necessary?
+Justifiable?
+
+
+
+👉 Key risk:
+
+Proxy variables (e.g. postcode proxying protected characteristics)
+
+
+E. Fairness & bias testing
+
+Compare outcomes across:
+
+Different customer segments
+
+
+Look for:
+
+Disproportionate pricing differences
+
+
+
+👉 Example:
+
+Are certain groups consistently over-priced?
+
+
+F. Stability & sensitivity
+
+Stress testing:
+
+What happens if inputs change?
+
+
+Check:
+
+Model behaviour under extreme scenarios
+
+
+
+
+G. Documentation & auditability
+
+Full documentation:
+
+Data sources
+Model design
+Limitations
+
+
+
+👉 Critical for:
+
+Regulators
+Internal governance
+
+
+🧠 Simple way to summarise validation
+
+“Does the model work, make sense, and comply with regulations?”
+
+
+🔄 2. Model Monitoring (after deployment)
+✅ What it means
+
+Continuously checking that the model still works as expected over time.
+
+
+🔍 What you actually monitor
+A. Performance drift
+
+Is predictive performance degrading?
+
+👉 Example:
+
+Pricing model no longer predicts claims accurately
+
+
+B. Data drift (very common issue)
+
+Has input data changed?
+
+👉 Example:
+
+Customer behaviour shifts
+New types of risk emerging
+
+
+C. Output stability
+
+Are prices changing unexpectedly?
+
+👉 Red flags:
+
+Sudden jumps in premiums
+Volatility without clear reason
+
+
+D. Fairness over time
+
+Are outcomes becoming biased?
+
+👉 Important because:
+
+Data can shift → bias can emerge later
+
+
+E. Business impact
+
+Are we:
+
+Profitable?
+Competitive?
+
+
+
+👉 Metrics:
+
+Loss ratio
+Conversion rates
+
+
+F. Compliance & governance
+
+Still aligned with:
+
+GDPR
+Consumer Duty
+Internal policies
+
+
+
+
+🔁 What happens if issues are found?
+
+Recalibration (adjust parameters)
+Model redevelopment
+Feature removal
+Governance escalation
+
+
+⚖️ 3. Validation vs Monitoring (clear distinction)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Area    Validation            Monitoring
+Timing  Before & at approval  Ongoing after deployment
+Focus    Is model correct?    Is model still working?
+Type    Deep review            Continuous tracking
+Output  Approval/report        Alerts, updates, retraining
+
+🎯 4. How this links to GDPR & regulation
+Both activities ensure:
+
+✅ Fairness → no bias or harmful outcomes
+✅ Transparency → documented, explainable model
+✅ Accountability → evidence of control
+
+👉 Regulators expect:
+
+Independent validation
+Clear audit trail
+Ongoing oversight
+
+
+🎤 💬 Strong interview answers
+⭐ “What is model validation?”
+
+Model validation is the process of ensuring that a model is fit for purpose, robust, and compliant before and after deployment. This includes assessing performance, checking assumptions, validating data quality, and ensuring the model is fair and explainable.
+
+
+⭐ “How do you monitor a pricing model?”
+
+I monitor model performance over time, including tracking predictive accuracy and key business metrics such as loss ratios. I also monitor data drift and ensure that input distributions remain stable. In addition, I assess fairness across customer segments and investigate any unexpected changes in pricing behaviour.
+
+
+⭐ “Why is monitoring important?”
+
+Because model performance can degrade over time due to changes in data or customer behaviour. Without monitoring, a model that was initially valid can become inaccurate, biased, or non-compliant.
+
+
+🧩 5. Practical examples (very strong to mention)
+✅ Example 1 (pricing model)
+
+“After deployment, I tracked loss ratio by segment and identified deterioration in a specific customer group, which led to recalibration of the model.”
+
+
+✅ Example 2 (fairness)
+
+“I monitored pricing outcomes across regions and identified potential proxy effects, leading to a review of postcode usage.”
+
+
+✅ Example 3 (data drift)
+
+“A shift in customer mix post-COVID affected model inputs, which required retraining the model.”
+
+
+🚀 Final takeaway
+Validation = “Did we build the right model?”
+Monitoring = “Is it still the right model?”
+
+If you want, I can turn this into a realistic case study question (like ones insurers ask) and walk you through how to answer it step-by-step.
