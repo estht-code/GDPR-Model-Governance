@@ -1,0 +1,215 @@
+Follow-up Scenario
+
+Your ML model improves Gini by 2% vs GLM.
+Would you use it?
+
+
+✅ 🧠 What they’re testing
+They want to see if you:
+
+Blindly chase performance ❌
+Or make a balanced, risk-aware decision ✅
+
+
+🧠 ✅ STRUCTURED THINKING APPROACH
+
+1. Validate uplift → 2. Assess materiality → 3. Assess risks → 4. Decide with justification
+
+
+✅ ✅ TOP-TIER ANSWER (step-by-step)
+🔹 1. Validate the 2% uplift
+
+“First, I would confirm that the 2% uplift is real and robust.”
+
+Check:
+
+Cross-validation results
+Out-of-sample performance
+Stability across segments
+
+👉 Key question:
+
+Is uplift consistent or concentrated?
+
+
+🔹 2. Assess materiality (this is where most candidates fail)
+
+“I would translate the uplift into business impact.”
+
+Examples:
+
+Does 2% Gini improvement:
+
+Improve loss ratio meaningfully?
+Increase profit?
+Improve risk segmentation?
+
+
+
+👉 Important insight:
+
+2% uplift can be:
+
+✅ Huge (millions in profit)
+❌ Negligible (noise)
+
+
+
+
+🔹 3. Assess risks of ML model (critical step)
+A. Explainability
+
+Can I explain:
+
+Key drivers?
+Individual predictions?
+
+
+
+Tools:
+
+SHAP values
+Feature importance
+
+👉 Risk:
+
+If not explainable → regulatory issue
+
+
+B. Fairness
+
+Does ML introduce:
+
+Proxy bias?
+
+
+
+Check:
+
+Outcomes across segments
+
+👉 ML is more likely to:
+
+Learn hidden biases
+
+
+C. Stability
+
+Is the model:
+
+Sensitive to small data changes?
+
+
+
+👉 ML models can:
+
+Be unstable in messy environments
+
+
+D. Governance cost
+
+Additional requirements:
+
+Documentation
+Validation
+Monitoring
+Approval from risk/compliance
+
+
+
+👉 Question:
+
+Is 2% uplift worth this cost?
+
+
+🔹 4. Compare vs GLM baseline
+
+“I would assess whether the uplift justifies moving away from a simpler, more interpretable model.”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FactorGLMMLInterpretability✅ Strong⚠️ WeakerStability✅ High⚠️ MediumPerformanceBaseline+2%Regulatory ease✅ Simple❌ More complex
+
+🔹 5. Make the decision (this is the key moment)
+✅ Option 1: DO NOT USE ML (very defensible)
+Say this if:
+
+Uplift is small / unstable
+Hard to explain
+
+
+“If the uplift is marginal or not stable, I would retain the GLM as it is simpler, more transparent, and easier to govern.”
+
+
+✅ Option 2: USE ML WITH CONTROLS (stronger answer)
+Say this if:
+
+Uplift is meaningful
+Risks can be controlled
+
+
+“If the uplift is consistent and translates into meaningful business value, I would consider using the ML model, provided I can ensure sufficient explainability, fairness, and governance.”
+
+Then add:
+
+Use SHAP for explainability
+Add fairness checks
+Strengthen monitoring
+
+
+🔥 🧠 BEST PRACTICE ANSWER (what top candidates say)
+
+“I would first validate that the 2% uplift is statistically robust and consistent across segments. I would then assess whether this translates into a meaningful business impact, such as improved loss ratio or profitability.
+I would also carefully evaluate the risks of using a machine learning model, including reduced explainability, potential bias, and increased governance requirements.
+If the uplift is marginal or difficult to justify from a regulatory perspective, I would retain the GLM. However, if the uplift is material and I can implement sufficient controls around explainability, fairness, and monitoring, I would consider deploying the ML model. Ultimately, the decision depends on balancing performance gains with regulatory and operational risk.”
+
+
+💡 💥 What makes this answer “hire-worthy”
+You show:
+
+✅ Commercial thinking (not just metrics)
+✅ Regulatory awareness
+✅ Model governance understanding
+✅ Balanced judgement (not theory-driven)
+
+
+🚀 Pro-level add-on (optional but impressive)
+You can say:
+
+“In some cases, I would take a hybrid approach—using the ML model to identify non-linearities and interactions, and then incorporating those into a GLM to retain interpretability.”
+
+👉 This is a very senior-level insight
+
+🎯 Final takeaway
+
+A good candidate says: “ML is more accurate.”
+A great candidate says:
+“It depends whether that accuracy is worth the regulatory and governance trade-offs.”
